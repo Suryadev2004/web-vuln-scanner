@@ -1,9 +1,11 @@
 import argparse
 from colorama import Fore, Style, init
+
 from scanners.header_scanner import check_headers
 from scanners.sql_scanner import check_sql_injection
 from scanners.xss_scanner import check_xss
 from scanners.port_scanner import check_ports
+from scanners.crawler import crawl_links
 from utils.report import ReportManager
 
 # Initialize colorama
@@ -21,13 +23,13 @@ parser = argparse.ArgumentParser(description="Modular Web Vulnerability Scanner"
 parser.add_argument(
     "--url",
     required=True,
-    help="Target URL to scan (example: http://example.com/page?id=1)"
+    help="Target URL to scan (example: http://example.com)"
 )
 
 args = parser.parse_args()
-url = args.url
+base_url = args.url.rstrip("/")  # remove trailing slash if exists
 
-print(f"\nScanning Target URL: {url}\n")
+print(f"\nStarting Scan on: {base_url}\n")
 
 # -------------------------
 # Severity Tracking
@@ -68,48 +70,71 @@ def colorize(message):
 # -------------------------
 # Initialize Report
 # -------------------------
-report = ReportManager(url)
+report = ReportManager(base_url)
 
 # -------------------------
-# Header Scan
+# Crawl Links
 # -------------------------
-print("Checking Security Headers...\n")
-report.write_section("Security Header Analysis:")
+print("Crawling for internal links...\n")
+report.write_section("Crawled URLs:")
 
-for result in check_headers(url):
-    track_severity(result)
-    print(colorize(result))
-    report.write_finding(result)
+crawled_links = crawl_links(base_url)
 
-# -------------------------
-# SQL Injection Scan
-# -------------------------
-print("\nChecking for SQL Injection...\n")
-report.write_section("SQL Injection Analysis:")
+# Always include base URL
+all_urls = set()
+all_urls.add(base_url)
 
-for result in check_sql_injection(url):
-    track_severity(result)
-    print(colorize(result))
-    report.write_finding(result)
+# Add discovered links
+for link in crawled_links:
+    all_urls.add(link.rstrip("/"))
 
-# -------------------------
-# XSS Scan
-# -------------------------
-print("\nChecking for XSS vulnerabilities...\n")
-report.write_section("XSS Analysis:")
-
-for result in check_xss(url):
-    track_severity(result)
-    print(colorize(result))
-    report.write_finding(result)
+# Print discovered URLs
+for link in all_urls:
+    print(link)
+    report.write_finding(link)
 
 # -------------------------
-# Port Scan
+# Scan Each URL
+# -------------------------
+for url in all_urls:
+
+    print(f"\n========== Scanning: {url} ==========\n")
+    report.write_section(f"Scanning: {url}")
+
+    # Header Scan
+    print("Checking Security Headers...\n")
+    report.write_section("Security Header Analysis:")
+
+    for result in check_headers(url):
+        track_severity(result)
+        print(colorize(result))
+        report.write_finding(result)
+
+    # SQL Injection Scan
+    print("\nChecking for SQL Injection...\n")
+    report.write_section("SQL Injection Analysis:")
+
+    for result in check_sql_injection(url):
+        track_severity(result)
+        print(colorize(result))
+        report.write_finding(result)
+
+    # XSS Scan
+    print("\nChecking for XSS vulnerabilities...\n")
+    report.write_section("XSS Analysis:")
+
+    for result in check_xss(url):
+        track_severity(result)
+        print(colorize(result))
+        report.write_finding(result)
+
+# -------------------------
+# Port Scan (Only Once)
 # -------------------------
 print("\nChecking Common Open Ports...\n")
 report.write_section("Port Scan Results:")
 
-for result in check_ports(url):
+for result in check_ports(base_url):
     track_severity(result)
     print(colorize(result))
     report.write_finding(result)

@@ -3,6 +3,10 @@ import requests
 def check_xss(url):
     findings = []
 
+    # Only test URLs with parameters
+    if "?" not in url:
+        return ["[INFO] No query parameters found. Skipping XSS test."]
+
     xss_payload = "<script>alert(1)</script>"
     test_url = url + xss_payload
 

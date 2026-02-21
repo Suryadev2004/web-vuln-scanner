@@ -3,6 +3,10 @@ import requests
 def check_sql_injection(url):
     findings = []
 
+    # Only test URLs with parameters
+    if "?" not in url:
+        return ["[INFO] No query parameters found. Skipping SQL injection test."]
+
     sql_payload = "' OR '1'='1"
     test_url = url + sql_payload
 
@@ -28,4 +32,3 @@ def check_sql_injection(url):
         findings.append(f"[ERROR] SQL test failed: {e}")
 
     return findings
-
