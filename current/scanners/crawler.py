@@ -2,28 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
-def crawl_links(base_url):
-    discovered_urls = set()
+def crawl_links(url):
+    discovered_links = set()
 
     try:
-        response = requests.get(base_url)
+        response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
 
-        for link in soup.find_all("a", href=True):
-            href = link["href"]
+        for tag in soup.find_all("a", href=True):
+            link = urljoin(url, tag["href"])
+            parsed_link = urlparse(link)
 
-            # Convert relative URLs to absolute
-            full_url = urljoin(base_url, href)
-
-            # Parse domain
-            parsed_base = urlparse(base_url)
-            parsed_url = urlparse(full_url)
-
-            # Only keep same-domain links
-            if parsed_base.netloc == parsed_url.netloc:
-                discovered_urls.add(full_url)
+            if parsed_link.netloc == urlparse(url).netloc:
+                clean_link = parsed_link.scheme + "://" + parsed_link.netloc + parsed_link.path
+                discovered_links.add(clean_link)
 
     except requests.exceptions.RequestException:
         pass
 
-    return discovered_urls
+    return discovered_links
