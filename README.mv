@@ -1,7 +1,10 @@
 # Web Vulnerability Scanner
 
-A modular educational web vulnerability scanner built step-by-step
+A modular, educational web vulnerability scanner built step-by-step
 to understand web security concepts and scanner architecture.
+
+This project evolves version by version to demonstrate how a real
+security tool grows from a simple scanner into a structured engine.
 
 ---
 
@@ -20,27 +23,51 @@ versions/
 
 # Version Progression
 
-## v1.0
-- Basic CLI scanner
+## v1.0 – Basic Modular Scanner
+- CLI-based scanner
 - Security header checks
-- Simple SQL & XSS testing
+- Basic SQL injection testing
+- Basic XSS testing
 - Port scanning
+- Structured report generation
 
-## v2.0
-- Internal link crawler
+---
+
+## v2.0 – Crawler Integration
+- Internal link crawling
 - Multi-page scanning
 - Smarter injection surface detection
+- Improved stability
 
-## v3.0
-- Form detection engine
+---
+
+## v3.0 – Form-Aware Injection Engine
+- Form detection system
 - Form-based SQL injection testing
-- Structured reporting improvements
+- Action URL normalization
+- Input field extraction
+- Improved report clarity
 
-## v4.0 (Latest)
-- Boolean TRUE vs FALSE SQL detection
-- Blind response comparison logic
+---
+
+## v4.0 – Boolean-Based Blind SQL Detection (Latest)
+
+- TRUE vs FALSE payload comparison
+- Behavioral response analysis
 - Reduced false positives
+- Blind SQL injection detection
 - Professional severity classification
+
+TRUE payload:
+' OR 1=1 --
+
+FALSE payload:
+' AND 1=2 --
+
+If response behavior differs between TRUE and FALSE conditions,
+the scanner flags a possible blind SQL vulnerability.
+
+Release Tag: v4.0
 
 ---
 
@@ -48,28 +75,119 @@ versions/
 
 - Modular architecture
 - CLI-based scanning
+- Internal link crawler
 - Security header analysis
-- SQL Injection detection
+- SQL injection detection
+- Boolean-based blind SQL testing
 - Form-based injection testing
 - XSS detection
 - Port scanning
+- Structured reporting
 - Versioned release system
+
+---
+
+# Usage Example
+
+## 1️⃣ Basic Scan
+
+Run from the `current` directory:
+
+cd current
+python main.py --url http://example.com
+
+Example:
+
+python main.py --url http://testphp.vulnweb.com
+
+---
+
+## 2️⃣ What Happens During a Scan
+
+The scanner will:
+
+- Crawl internal links
+- Detect forms
+- Perform SQL injection testing
+- Perform Boolean blind SQL comparison
+- Test for XSS
+- Check security headers
+- Scan common ports
+- Generate a report file
+
+---
+
+## 3️⃣ Output Example
+
+Console Output:
+
+Starting Scan on: http://testphp.vulnweb.com
+Crawling for internal links...
+Scanning: http://testphp.vulnweb.com/login.php
+[LOW] Missing Security Header: X-Frame-Options
+[MEDIUM] Boolean-based Blind SQL Injection suspected...
+
+---
+
+## 4️⃣ Report File
+
+After scanning completes, results are saved to:
+
+current/report.txt
+
+The report includes:
+- Per-page findings
+- Severity classification
+- Summary statistics
+
+---
+
+# Severity Levels
+
+HIGH   → Confirmed vulnerability  
+MEDIUM → Blind/behavior-based suspicion  
+LOW    → Misconfiguration or weak security  
+INFO   → Informational output  
+OK     → No issue detected  
+ERROR  → Scan execution error  
 
 ---
 
 # Educational Purpose
 
-This project is built version by version to learn:
+This project is built incrementally to learn:
 
 - Web vulnerability detection techniques
 - Injection testing logic
+- Blind SQL detection methods
 - Scanner architecture design
 - Git versioning discipline
-- Professional documentation structure
+- Professional documentation practices
 
 ---
 
-# Latest Release
+# Limitations
 
-Tag: v4.0  
-Engine: Boolean-based Blind SQL Injection Detection
+- No time-based SQL detection (yet)
+- No per-parameter injection testing
+- No multithreading
+- No WAF evasion logic
+- No DOM-based XSS analysis
+
+---
+
+# Roadmap (Future Versions)
+
+- Time-based SQL injection detection
+- Per-parameter injection engine
+- Advanced XSS detection
+- Multithreaded scanning
+- Performance optimization
+- Improved reporting engine
+
+---
+
+# Author
+
+Suryadev S R  
+Cybersecurity Learning Project
