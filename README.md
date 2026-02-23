@@ -1,114 +1,89 @@
-#  Web Vulnerability Scanner
 
-A modular Python-based web application vulnerability scanner built for learning and practicing cybersecurity concepts.
+# Web Vulnerability Scanner (Educational Project)
 
-This project is developed version-by-version to demonstrate structured growth from a basic scanner (v1.0) to a smarter crawler-based scanner (v2.0).
+A modular Python-based web vulnerability scanner developed step-by-step with versioned milestones.
 
----
+This project is built for educational purposes to understand:
 
-##  Project Goal
-
-To understand how web vulnerability scanners work internally by building one from scratch using:
-
-- Python
-- Modular architecture
-- Controlled crawling
-- Basic injection testing logic
-- Clean Git version management
+- Web security testing concepts
+- Modular software architecture
+- Injection surface modeling
+- Version control discipline using Git
 
 ---
 
-##  Features (v2.0)
+# Project Evolution
 
--  Internal link crawling (scope-restricted)
--  Security header analysis
--  Basic SQL Injection detection (query parameter-based)
--  Basic reflected XSS detection
--  Common port scanning (21, 22, 80, 443, 3306)
--  Structured text-based reporting
--  Clean modular architecture
--  Version evolution tracking (v1.0 → v2.0)
-
----
-
-##  Project Architecture
-
-current/
-├── main.py
-├── scanners/
-│ ├── crawler.py
-│ ├── header_scanner.py
-│ ├── sql_scanner.py
-│ ├── xss_scanner.py
-│ └── port_scanner.py
-└── utils/
-└── report.py
-
-
-### Design Principles
-
-- `main.py` → Controls workflow and scan coordination  
-- `scanners/` → Each vulnerability type is isolated into its own module  
-- `utils/report.py` → Handles structured report generation  
-
-This separation makes the project scalable and easier to extend in future versions.
-
----
-
-##  Version Evolution
-
-###  v1.0 – Modular Foundation
-- Basic modular scanner
+## v1.0 – Basic Modular Scanner
 - Header scanning
-- SQL & XSS payload testing
+- Basic SQL injection testing (URL parameters)
+- Basic XSS testing
 - Port scanning
-- CLI-based execution
+- CLI-based scanning
+- Text report generation
 
-###  v2.0 – Smarter Scanning
-- Internal crawler added
+---
+
+## v2.0 – Crawler + Surface Expansion
+- Internal link crawling
 - Multi-URL scanning
-- Injection surface detection
-- Improved stability
-- Clean Git tagging and structured version showcase
+- Intelligent skipping of non-parameter URLs
+- Improved severity tracking
+- Cleaner modular structure
 
 ---
 
-##  Installation
+## v3.0 – Form-Aware Injection Engine
+- Form extraction (action, method, inputs)
+- POST & GET injection support
+- Controlled parameter-by-parameter SQL testing
+- Structured reporting
+- Clean snapshot versioning system
 
-```bash
-pip install requests
-pip install beautifulsoup4
-pip install colorama
+Location: versions/v3.0
 
----
 
-## Usage 
-
-#> python main.py --url http://example.com
-
-- example
-
-#> python main.py --url http://testphp.vulnweb.com
 
 ---
 
-## Output
+# Current Development
 
-Console-based severity output
+Active development code is located in: current/
 
-Structured report.txt file
-
-Summary of detected findings
 
 ---
 
-## Disclaimer
+# Architecture Overview
 
-This tool is created strictly for educational purposes.
 
-Only scan applications you own or have explicit permission to test.
+main.py        → Orchestrator
+scanners/      → Vulnerability modules
+utils/         → Reporting engine
+versions/      → Version snapshots
 
-Unauthorized scanning may be illegal.
 
 ---
+
+# Educational Goals
+
+This project demonstrates:
+
+- Clean modular design
+- Controlled vulnerability testing
+- Injection modeling
+- Professional Git workflow
+- Version-based software evolution
+
+---
+
+# Disclaimer
+
+This tool is for educational purposes only.
+Do not scan systems without permission.
+
+---
+
+# Author
+
+Suryadev S R
 

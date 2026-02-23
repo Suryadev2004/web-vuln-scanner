@@ -1,0 +1,84 @@
+# Web Vulnerability Scanner – v3.0
+
+## Overview
+
+Version 3.0 introduces form-aware injection testing.
+
+This version expands the scanner from URL-only testing to structured form-based SQL injection detection.
+
+The scanner now models real attack surfaces including POST forms and controlled parameter injection.
+
+---
+
+## Key Features in v3.0
+
+- Internal link crawling (scope-restricted)
+- Security header analysis
+- URL-based SQL Injection testing
+- URL-based XSS testing
+- Form extraction (action, method, inputs)
+- Form-based SQL injection (one parameter at a time)
+- Structured severity tracking
+- Clean modular architecture
+- Text-based reporting engine
+
+---
+
+## Architecture
+
+main.py  
+→ Controls scan flow  
+
+scanners/  
+→ header_scanner.py  
+→ crawler.py  
+→ sql_scanner.py  
+→ xss_scanner.py  
+→ form_scanner.py  
+→ form_sqli_scanner.py  
+→ port_scanner.py  
+
+utils/  
+→ report.py  
+
+---
+
+## What Changed From v2.0
+
+- Added form surface detection
+- Added controlled POST injection logic
+- Improved modular separation
+- Cleaner severity tracking
+- Safer injection logic (one parameter at a time)
+
+---
+
+## Limitations
+
+- Only error-based SQL detection
+- No blind SQL injection detection
+- No session/CSRF handling
+- No form-based XSS injection
+- Sequential scanning (no threading)
+
+---
+
+## Educational Objective
+
+This version demonstrates:
+
+- Injection surface modeling
+- Controlled vulnerability testing
+- Modular scanner architecture
+- Version-based development workflow
+
+---
+
+## Usage
+
+python main.py --url http://example.com
+
+
+---
+
+Version Tag: v3.0
