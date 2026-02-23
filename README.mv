@@ -1,0 +1,75 @@
+# Web Vulnerability Scanner
+
+A modular educational web vulnerability scanner built step-by-step
+to understand web security concepts and scanner architecture.
+
+---
+
+# Project Structure
+
+current/
+    Active development version
+
+versions/
+    v1.0 – Basic modular scanner
+    v2.0 – Multi-page crawler
+    v3.0 – Form-aware injection engine
+    v4.0 – Boolean-based blind SQL detection
+
+---
+
+# Version Progression
+
+## v1.0
+- Basic CLI scanner
+- Security header checks
+- Simple SQL & XSS testing
+- Port scanning
+
+## v2.0
+- Internal link crawler
+- Multi-page scanning
+- Smarter injection surface detection
+
+## v3.0
+- Form detection engine
+- Form-based SQL injection testing
+- Structured reporting improvements
+
+## v4.0 (Latest)
+- Boolean TRUE vs FALSE SQL detection
+- Blind response comparison logic
+- Reduced false positives
+- Professional severity classification
+
+---
+
+# Features
+
+- Modular architecture
+- CLI-based scanning
+- Security header analysis
+- SQL Injection detection
+- Form-based injection testing
+- XSS detection
+- Port scanning
+- Versioned release system
+
+---
+
+# Educational Purpose
+
+This project is built version by version to learn:
+
+- Web vulnerability detection techniques
+- Injection testing logic
+- Scanner architecture design
+- Git versioning discipline
+- Professional documentation structure
+
+---
+
+# Latest Release
+
+Tag: v4.0  
+Engine: Boolean-based Blind SQL Injection Detection
