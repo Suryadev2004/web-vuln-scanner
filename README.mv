@@ -17,7 +17,7 @@ versions/
     v1.0 – Basic modular scanner
     v2.0 – Multi-page crawler
     v3.0 – Form-aware injection engine
-    v4.0 – Boolean-based blind SQL detection
+    v4.0 – Boolean-based blind SQL detection (Latest)
 
 ---
 
@@ -50,7 +50,7 @@ versions/
 
 ---
 
-## v4.0 – Boolean-Based Blind SQL Detection (Latest)
+## v4.0 – Boolean-Based Blind SQL Detection
 
 - TRUE vs FALSE payload comparison
 - Behavioral response analysis
@@ -87,13 +87,57 @@ Release Tag: v4.0
 
 ---
 
-# Usage Example
+# Requirements
 
-## 1️⃣ Basic Scan
+To run this project, you need:
 
-Run from the `current` directory:
+- Python 3.9 or higher
+- Internet connection (for scanning live targets)
 
-cd current
+Python packages used:
+
+- requests
+- beautifulsoup4
+- colorama
+
+---
+
+# Installation
+
+## 1️⃣ Clone the Repository
+
+git clone https://github.com/Suryadev2004/web-vuln-scanner.git  
+cd web-vuln-scanner
+
+---
+
+## 2️⃣ (Optional but Recommended) Create Virtual Environment
+
+Windows:
+
+python -m venv venv  
+venv\Scripts\activate
+
+Mac/Linux:
+
+python3 -m venv venv  
+source venv/bin/activate
+
+---
+
+## 3️⃣ Install Required Packages
+
+pip install requests beautifulsoup4 colorama
+
+Or if requirements.txt exists:
+
+pip install -r requirements.txt
+
+---
+
+## 4️⃣ Run the Scanner
+
+cd current  
 python main.py --url http://example.com
 
 Example:
@@ -102,7 +146,7 @@ python main.py --url http://testphp.vulnweb.com
 
 ---
 
-## 2️⃣ What Happens During a Scan
+# What Happens During a Scan
 
 The scanner will:
 
@@ -117,19 +161,19 @@ The scanner will:
 
 ---
 
-## 3️⃣ Output Example
+# Output Example
 
 Console Output:
 
-Starting Scan on: http://testphp.vulnweb.com
-Crawling for internal links...
-Scanning: http://testphp.vulnweb.com/login.php
-[LOW] Missing Security Header: X-Frame-Options
+Starting Scan on: http://testphp.vulnweb.com  
+Crawling for internal links...  
+Scanning: http://testphp.vulnweb.com/login.php  
+[LOW] Missing Security Header: X-Frame-Options  
 [MEDIUM] Boolean-based Blind SQL Injection suspected...
 
 ---
 
-## 4️⃣ Report File
+# Report File
 
 After scanning completes, results are saved to:
 
@@ -153,24 +197,11 @@ ERROR  → Scan execution error
 
 ---
 
-# Educational Purpose
-
-This project is built incrementally to learn:
-
-- Web vulnerability detection techniques
-- Injection testing logic
-- Blind SQL detection methods
-- Scanner architecture design
-- Git versioning discipline
-- Professional documentation practices
-
----
-
 # Limitations
 
 - No time-based SQL detection (yet)
 - No per-parameter injection testing
-- No multithreading
+- Sequential scanning (no multithreading)
 - No WAF evasion logic
 - No DOM-based XSS analysis
 
@@ -184,6 +215,19 @@ This project is built incrementally to learn:
 - Multithreaded scanning
 - Performance optimization
 - Improved reporting engine
+
+---
+
+# Educational Purpose
+
+This project is built incrementally to learn:
+
+- Web vulnerability detection techniques
+- Injection testing logic
+- Blind SQL detection methods
+- Scanner architecture design
+- Git versioning discipline
+- Professional documentation practices
 
 ---
 
