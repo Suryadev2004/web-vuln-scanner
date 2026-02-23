@@ -50,7 +50,7 @@ versions/
 
 ---
 
-## v4.0 – Boolean-Based Blind SQL Detection
+## v4.0 – Boolean-Based Blind SQL Detection (Latest)
 
 - TRUE vs FALSE payload comparison
 - Behavioral response analysis
@@ -111,7 +111,7 @@ cd web-vuln-scanner
 
 ---
 
-## 2️⃣ (Optional but Recommended) Create Virtual Environment
+## 2️⃣ (Optional) Create a Virtual Environment
 
 Windows:
 
@@ -125,13 +125,17 @@ source venv/bin/activate
 
 ---
 
-## 3️⃣ Install Required Packages
+## 3️⃣ Install Requirements
 
-pip install requests beautifulsoup4 colorama
-
-Or if requirements.txt exists:
+Install dependencies using:
 
 pip install -r requirements.txt
+
+This will install:
+
+- requests
+- beautifulsoup4
+- colorama
 
 ---
 
