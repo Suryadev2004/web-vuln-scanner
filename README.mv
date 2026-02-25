@@ -1,23 +1,65 @@
 # Web Vulnerability Scanner
 
-A modular, educational web vulnerability scanner built step-by-step
+A modular, educational web vulnerability scanner built step-by-step  
 to understand web security concepts and scanner architecture.
 
-This project evolves version by version to demonstrate how a real
+This project evolves version by version to demonstrate how a real  
 security tool grows from a simple scanner into a structured engine.
+
+---
+
+# Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Language | Python 3.9+ |
+| HTTP Handling | requests |
+| HTML Parsing | BeautifulSoup4 |
+| CLI Interface | argparse |
+| Console Styling | colorama |
+| Architecture | Modular Scanner Design |
+| Version Control | Git + GitHub |
+| Testing Target | testphp.vulnweb.com |
+
+---
+
+# Technologies Used
+
+## Core Technologies
+- Python 3.9+
+- requests (HTTP communication)
+- beautifulsoup4 (HTML parsing and form extraction)
+- colorama (colored CLI output)
+- argparse (CLI argument parsing)
+
+## Security Concepts Implemented
+- SQL Injection Testing
+- Boolean-Based Blind SQL Detection
+- XSS Detection
+- Security Header Analysis
+- Internal Link Crawling
+- Port Scanning
+- Form-Based Injection Testing
+
+## Development Practices
+- Modular architecture design
+- Versioned release system
+- Structured reporting
+- Severity classification framework
+- Incremental feature development
 
 ---
 
 # Project Structure
 
-current/
-    Active development version
+current/  
+    Active development version  
 
-versions/
-    v1.0 – Basic modular scanner
-    v2.0 – Multi-page crawler
-    v3.0 – Form-aware injection engine
-    v4.0 – Boolean-based blind SQL detection (Latest)
+versions/  
+    v1.0 – Basic modular scanner  
+    v2.0 – Multi-page crawler  
+    v3.0 – Form-aware injection engine  
+    v4.0 – Boolean-based blind SQL detection (Latest)  
 
 ---
 
@@ -64,7 +106,7 @@ TRUE payload:
 FALSE payload:
 ' AND 1=2 --
 
-If response behavior differs between TRUE and FALSE conditions,
+If response behavior differs between TRUE and FALSE conditions,  
 the scanner flags a possible blind SQL vulnerability.
 
 Release Tag: v4.0
@@ -87,59 +129,39 @@ Release Tag: v4.0
 
 ---
 
-# Requirements
+# Installation Guide
 
-To run this project, you need:
-
-- Python 3.9 or higher
-- Internet connection (for scanning live targets)
-
-Python packages used:
-
-- requests
-- beautifulsoup4
-- colorama
-
----
-
-# Installation
-
-## 1️⃣ Clone the Repository
+## 1. Clone the Repository
 
 git clone https://github.com/Suryadev2004/web-vuln-scanner.git  
 cd web-vuln-scanner
 
 ---
 
-## 2️⃣ (Optional) Create a Virtual Environment
+## 2. Create Virtual Environment (Recommended)
 
-Windows:
-
+### Windows
 python -m venv venv  
-venv\Scripts\activate
+venv\Scripts\activate  
 
-Mac/Linux:
-
+### Mac/Linux
 python3 -m venv venv  
-source venv/bin/activate
+source venv/bin/activate  
 
 ---
 
-## 3️⃣ Install Requirements
-
-Install dependencies using:
+## 3. Install Dependencies
 
 pip install -r requirements.txt
 
-This will install:
-
+Required packages:
 - requests
 - beautifulsoup4
 - colorama
 
 ---
 
-## 4️⃣ Run the Scanner
+## 4. Run the Scanner
 
 cd current  
 python main.py --url http://example.com
@@ -219,6 +241,16 @@ ERROR  → Scan execution error
 - Multithreaded scanning
 - Performance optimization
 - Improved reporting engine
+
+---
+
+# Disclaimer
+
+This tool is developed strictly for educational and authorized security testing purposes only.
+
+Do NOT use this tool on systems you do not own or have explicit permission to test.
+
+The author is not responsible for any misuse of this software.
 
 ---
 
